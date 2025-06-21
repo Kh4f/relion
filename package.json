@@ -24,7 +24,9 @@
 	],
 	"main": "./src/index.js",
 	"type": "module",
-	"bin": "./src/cli.js",
+	"bin": {
+    "mycli": "./src/cli.js"
+  },
 	"files": [
 		"src",
 		"package.json",
@@ -32,13 +34,10 @@
 		"README.md"
 	],
 	"scripts": {
-		"lint": "eslint .",
-		"lint:fix": "pnpm lint -- --fix",
-		"format:base": "prettier \"./**/*.{ts,js}\"",
-		"format:fix": "pnpm format:base -- --write",
-		"format:check": "pnpm format:base -- --check",
-		"release": "node bin/cli.js --changelog --bump --commit --tag",
-		"release:gh-notes": "node bin/cli.js --profile gh-release-notes --changelog"
+		"lint": "eslint",
+		"lint:fix": "eslint --fix",
+		"release": "node ./src/cli.js --changelog --bump --commit --tag",
+		"release:gh-notes": "node ./src/cli.js --changelog --profile gh-release-notes "
 	},
 	"dependencies": {
 		"chalk": "^5.4.1",
